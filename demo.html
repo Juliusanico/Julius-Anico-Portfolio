@@ -1,0 +1,1432 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Demo</title> 
+    <link rel="stylesheet" href="demo.css"> 
+</head> 
+<body> 
+ 
+<header> 
+ 
+    <h1>C++ Demo System</h1> 
+ 
+    <p> 
+        Demo with realtime output and variable explanations 
+    </p> 
+ 
+</header> 
+ 
+ 
+<div class="container"> 
+ 
+ 
+<!-- ========================================= 
+     DEMO MENU 
+========================================= --> 
+ 
+<aside class="demos"> 
+ 
+    <h3>10 Demos</h3> 
+ 
+    <button class="demo-btn" onclick="loadDemo(0)"> 
+        1. Function to compute the factorial of a non-negative integer 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(1)"> 
+        2. reverse number 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(2)"> 
+        3. case 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(3)"> 
+        4. grade 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(4)"> 
+        5. sorting 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(5)"> 
+        6. array 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(6)"> 
+        7. square array 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(7)"> 
+        8. string 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(8)"> 
+        9. enter grade 
+    </button> 
+ 
+    <button class="demo-btn" onclick="loadDemo(9)"> 
+        10. float 
+    </button> 
+ 
+</aside> 
+ 
+ 
+<!-- ========================================= 
+     EDITOR 
+========================================= --> 
+ 
+<main class="editor"> 
+ 
+    <div class="editor-title"> 
+        C++ Code Editor 
+    </div> 
+ 
+    <textarea id="code"></textarea> 
+ 
+ 
+    <!-- INPUT --> 
+ 
+    <div class="input-area"> 
+ 
+        <label> 
+            Demo Input: 
+        </label> 
+ 
+        <input 
+            type="text" 
+            id="userInput" 
+            value="5" 
+        > 
+ 
+    </div> 
+ 
+ 
+    <div class="buttons"> 
+ 
+        <button class="run" onclick="runCode()"> 
+            ▶ Run C++ 
+        </button> 
+ 
+        <button class="clear" onclick="clearOutput()"> 
+            Clear Output 
+        </button> 
+ 
+    </div> 
+ 
+ 
+    <!-- OUTPUT --> 
+ 
+    <div class="output-box"> 
+ 
+        <div class="output-title"> 
+            Console Output 
+        </div> 
+ 
+        <div id="output"> 
+            Select a demo and click Run C++. 
+        </div> 
+ 
+    </div> 
+ 
+</main> 
+ 
+ 
+<!-- ========================================= 
+     EXPLANATION 
+========================================= --> 
+ 
+<aside class="info"> 
+ 
+    <h2 id="infoTitle"> 
+        C++ Explanation 
+    </h2> 
+ 
+    <div id="explanation"> 
+        Select a demo to see its explanation. 
+    </div> 
+ 
+</aside> 
+ 
+</div> 
+ 
+ 
+<script> 
+ 
+/* 
+================================================== 
+10 DEMOS 
+================================================== 
+*/ 
+ 
+const demos = [ 
+ 
+/* ================================================= 
+   1. FACTORIAL 
+================================================= */ 
+ 
+{ 
+    title: 
+    "1. Function to compute the factorial of a non-negative integer", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+// Function to compute factorial 
+unsigned long long factorial(int n) { 
+ 
+    if (n < 0) { 
+        cout << "Factorial is not defined for negative numbers." 
+             << endl; 
+ 
+        return 0; 
+    } 
+ 
+    if (n == 0 || n == 1) { 
+        return 1; 
+    } 
+ 
+    unsigned long long result = 1; 
+ 
+    for (int i = 2; i <= n; ++i) { 
+        result *= i; 
+    } 
+ 
+    return result; 
+} 
+ 
+int main() { 
+ 
+    int n; 
+ 
+    cout << "Input n for factorial function: "; 
+    cin >> n; 
+ 
+    unsigned long long result = factorial(n); 
+ 
+    if (n >= 0) { 
+        cout << "The factorial of integer " 
+             << n 
+             << " is: " 
+             << result 
+             << endl; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Factorial Function</h3> 
+ 
+<p> 
+This program uses a function named 
+<b>factorial()</b> to calculate the factorial 
+of a non-negative integer. 
+</p> 
+ 
+<div class="variable"> 
+<strong>n</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the number entered by the user. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>result</strong> 
+<p> 
+<span class="type">unsigned long long</span> — 
+Stores the factorial result. 
+For example, 5! = 120. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>i</strong> 
+<p> 
+<span class="type">int</span> — 
+Loop counter starting at 2 and continuing 
+until it reaches n. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>factorial()</strong> 
+<p> 
+A function that calculates and returns 
+the factorial of n. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   2. REVERSE NUMBER 
+================================================= */ 
+ 
+{ 
+    title: "2. reverse number", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    int number; 
+    int reverse = 0; 
+    int remainder; 
+ 
+    cout << "Enter a number: "; 
+    cin >> number; 
+ 
+    while (number != 0) { 
+ 
+        remainder = number % 10; 
+ 
+        reverse = reverse * 10 + remainder; 
+ 
+        number = number / 10; 
+    } 
+ 
+    cout << "Reverse number: " 
+         << reverse 
+         << endl; 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Reverse Number</h3> 
+ 
+<p> 
+This program reverses the digits of an integer. 
+For example, 12345 becomes 54321. 
+</p> 
+ 
+<div class="variable"> 
+<strong>number</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the number entered by the user. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>reverse</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the reversed number. 
+It starts at 0. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>remainder</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the last digit of the number 
+using the modulo operator (%). 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   3. CASE 
+================================================= */ 
+ 
+{ 
+    title: "3. case", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    int choice; 
+ 
+    cout << "Enter a number from 1 to 3: "; 
+    cin >> choice; 
+ 
+    switch (choice) { 
+ 
+        case 1: 
+            cout << "You selected ONE." << endl; 
+            break; 
+ 
+        case 2: 
+            cout << "You selected TWO." << endl; 
+            break; 
+ 
+        case 3: 
+            cout << "You selected THREE." << endl; 
+            break; 
+ 
+        default: 
+            cout << "Invalid choice." << endl; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Switch Case</h3> 
+ 
+<p> 
+The switch statement allows the program to 
+choose different actions based on a value. 
+</p> 
+ 
+<div class="variable"> 
+<strong>choice</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the number selected by the user. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>case</strong> 
+<p> 
+Checks a specific value of the choice variable. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>default</strong> 
+<p> 
+Runs when none of the cases match. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   4. GRADE 
+================================================= */ 
+ 
+{ 
+    title: "4. grade", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    int score; 
+ 
+    cout << "Enter score: "; 
+    cin >> score; 
+ 
+    if (score >= 90) { 
+        cout << "Grade: A" << endl; 
+    } 
+    else if (score >= 80) { 
+        cout << "Grade: B" << endl; 
+    } 
+    else if (score >= 70) { 
+        cout << "Grade: C" << endl; 
+    } 
+    else if (score >= 60) { 
+        cout << "Grade: D" << endl; 
+    } 
+    else { 
+        cout << "Grade: F" << endl; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Grade</h3> 
+ 
+<p> 
+This program determines a letter grade 
+based on a student's score. 
+</p> 
+ 
+<div class="variable"> 
+<strong>score</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the student's numerical score. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>if</strong> 
+<p> 
+Checks whether the score meets a condition. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>else if</strong> 
+<p> 
+Checks another condition when the previous 
+condition was false. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>else</strong> 
+<p> 
+Runs when all previous conditions are false. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   5. SORTING 
+================================================= */ 
+ 
+{ 
+    title: "5. sorting", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    int numbers[5] = {5, 2, 8, 1, 3}; 
+    int temp; 
+ 
+    for (int i = 0; i < 5; i++) { 
+ 
+        for (int j = i + 1; j < 5; j++) { 
+ 
+            if (numbers[i] > numbers[j]) { 
+ 
+                temp = numbers[i]; 
+ 
+                numbers[i] = numbers[j]; 
+ 
+                numbers[j] = temp; 
+            } 
+        } 
+    } 
+ 
+    cout << "Sorted numbers: "; 
+ 
+    for (int i = 0; i < 5; i++) { 
+        cout << numbers[i] << " "; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Sorting</h3> 
+ 
+<p> 
+This program sorts five integers from smallest 
+to largest. 
+</p> 
+ 
+<div class="variable"> 
+<strong>numbers</strong> 
+<p> 
+<span class="type">int[5]</span> — 
+An array containing five numbers. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>temp</strong> 
+<p> 
+<span class="type">int</span> — 
+Temporary variable used when swapping 
+two numbers. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>i</strong> 
+<p> 
+<span class="type">int</span> — 
+Outer loop counter. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>j</strong> 
+<p> 
+<span class="type">int</span> — 
+Inner loop counter used to compare values. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   6. ARRAY 
+================================================= */ 
+ 
+{ 
+    title: "6. array", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    int numbers[5] = { 
+        10, 20, 30, 40, 50 
+    }; 
+ 
+    cout << "Array values:" << endl; 
+ 
+    for (int i = 0; i < 5; i++) { 
+        cout << numbers[i] << endl; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Array</h3> 
+ 
+<p> 
+An array stores multiple values under 
+one variable name. 
+</p> 
+ 
+<div class="variable"> 
+<strong>numbers</strong> 
+<p> 
+<span class="type">int[5]</span> — 
+Stores five integer values: 
+10, 20, 30, 40, and 50. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>i</strong> 
+<p> 
+<span class="type">int</span> — 
+Used as the array index. 
+It starts at 0. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>numbers[0]</strong> 
+<p> 
+First array element: 10. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>numbers[4]</strong> 
+<p> 
+Last array element: 50. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   7. SQUARE ARRAY 
+================================================= */ 
+ 
+{ 
+    title: "7. square array", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    int numbers[5] = { 
+        1, 2, 3, 4, 5 
+    }; 
+ 
+    int square; 
+ 
+    cout << "Square values:" << endl; 
+ 
+    for (int i = 0; i < 5; i++) { 
+ 
+        square = numbers[i] * numbers[i]; 
+ 
+        cout << square << endl; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Square Array</h3> 
+ 
+<p> 
+This program calculates the square of every 
+number in an array. 
+</p> 
+ 
+<div class="variable"> 
+<strong>numbers</strong> 
+<p> 
+<span class="type">int[5]</span> — 
+Contains the numbers 1, 2, 3, 4, and 5. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>square</strong> 
+<p> 
+<span class="type">int</span> — 
+Stores the square of the current number. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>i</strong> 
+<p> 
+<span class="type">int</span> — 
+Array index and loop counter. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   8. STRING 
+================================================= */ 
+ 
+{ 
+    title: "8. string", 
+ 
+    code: 
+`#include <iostream> 
+#include <string> 
+using namespace std; 
+ 
+int main() { 
+ 
+    string name; 
+ 
+    cout << "Enter your name: "; 
+    cin >> name; 
+ 
+    cout << "Hello, " << name << "!" << endl; 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>String</h3> 
+ 
+<p> 
+This program accepts text from the user 
+and displays it. 
+</p> 
+ 
+<div class="variable"> 
+<strong>name</strong> 
+<p> 
+<span class="type">string</span> — 
+Stores text entered by the user. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>string</strong> 
+<p> 
+A C++ data type used for storing text. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>cout</strong> 
+<p> 
+Displays the text in the console. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   9. ENTER GRADE 
+================================================= */ 
+ 
+{ 
+    title: "9. enter grade", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    char grade; 
+ 
+    cout << "Enter grade (A, B, C, D, F): "; 
+    cin >> grade; 
+ 
+    switch (grade) { 
+ 
+        case 'A': 
+        case 'a': 
+            cout << "Excellent!" << endl; 
+            break; 
+ 
+        case 'B': 
+        case 'b': 
+            cout << "Very Good!" << endl; 
+            break; 
+ 
+        case 'C': 
+        case 'c': 
+            cout << "Good!" << endl; 
+            break; 
+ 
+        case 'D': 
+        case 'd': 
+            cout << "Needs Improvement." << endl; 
+            break; 
+ 
+        case 'F': 
+        case 'f': 
+            cout << "Failed." << endl; 
+            break; 
+ 
+        default: 
+            cout << "Invalid grade." << endl; 
+    } 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Enter Grade</h3> 
+ 
+<p> 
+The program accepts a letter grade and 
+displays an appropriate message. 
+</p> 
+ 
+<div class="variable"> 
+<strong>grade</strong> 
+<p> 
+<span class="type">char</span> — 
+Stores one character such as A, B, C, D, or F. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>case</strong> 
+<p> 
+Checks the value of grade against a specific 
+letter. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>default</strong> 
+<p> 
+Displays "Invalid grade" if the entered 
+character does not match a valid grade. 
+</p> 
+</div> 
+` 
+}, 
+ 
+ 
+/* ================================================= 
+   10. FLOAT 
+================================================= */ 
+ 
+{ 
+    title: "10. float", 
+ 
+    code: 
+`#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+    float price = 99.50f; 
+    float quantity = 3.0f; 
+    float total; 
+ 
+    total = price * quantity; 
+ 
+    cout << "Price: " << price << endl; 
+    cout << "Quantity: " << quantity << endl; 
+    cout << "Total: " << total << endl; 
+ 
+    return 0; 
+}`, 
+ 
+    explanation: 
+` 
+<h3>Float</h3> 
+ 
+<p> 
+This program demonstrates how to use decimal 
+numbers with the float data type. 
+</p> 
+ 
+<div class="variable"> 
+<strong>price</strong> 
+<p> 
+<span class="type">float</span> — 
+Stores the price of one item. 
+Value: 99.50. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>quantity</strong> 
+<p> 
+<span class="type">float</span> — 
+Stores the number of items. 
+Value: 3. 
+</p> 
+</div> 
+ 
+<div class="variable"> 
+<strong>total</strong> 
+<p> 
+<span class="type">float</span> — 
+Stores price multiplied by quantity. 
+99.50 × 3 = 298.50. 
+</p> 
+</div> 
+` 
+ 
+} 
+ 
+]; 
+ 
+ 
+/* 
+================================================== 
+CURRENT DEMO 
+================================================== 
+*/ 
+ 
+let currentDemo = 0; 
+ 
+ 
+/* 
+================================================== 
+LOAD DEMO 
+================================================== 
+*/ 
+ 
+function loadDemo(index) { 
+ 
+    currentDemo = index; 
+ 
+    const demo = demos[index]; 
+ 
+    document.getElementById("code").value = 
+        demo.code; 
+ 
+    document.getElementById("infoTitle").textContent = 
+        demo.title; 
+ 
+    document.getElementById("explanation").innerHTML = 
+        demo.explanation; 
+ 
+    document.getElementById("output").textContent = 
+        "Click ▶ Run C++ to start."; 
+ 
+    /* 
+    Highlight selected button 
+    */ 
+ 
+    const buttons = 
+        document.querySelectorAll(".demo-btn"); 
+ 
+    buttons.forEach(function(button) { 
+        button.classList.remove("active"); 
+    }); 
+ 
+    buttons[index].classList.add("active"); 
+ 
+} 
+ 
+ 
+/* 
+================================================== 
+RUN CODE 
+================================================== 
+*/ 
+ 
+function runCode() { 
+ 
+    const demo = demos[currentDemo]; 
+ 
+    const output = 
+        document.getElementById("output"); 
+ 
+    const input = 
+        document.getElementById("userInput").value.trim(); 
+ 
+ 
+    output.textContent = 
+        "Compiling C++...\n"; 
+ 
+ 
+    setTimeout(function() { 
+ 
+        output.textContent = 
+            "Program started...\n\n"; 
+ 
+        runDemo(currentDemo, input); 
+ 
+    }, 500); 
+ 
+} 
+ 
+ 
+/* 
+================================================== 
+RUN SELECTED DEMO 
+================================================== 
+*/ 
+ 
+function runDemo(index, input) { 
+ 
+    const output = 
+        document.getElementById("output"); 
+ 
+ 
+    /* 
+    ============================================== 
+    1. FACTORIAL 
+    ============================================== 
+    */ 
+ 
+    if (index === 0) { 
+ 
+        let n = parseInt(input); 
+ 
+        if (isNaN(n)) { 
+            n = 5; 
+        } 
+ 
+        if (n < 0) { 
+ 
+            realtimeOutput([ 
+                "Input n for factorial function: " + n, 
+                "Factorial is not defined for negative numbers." 
+            ]); 
+ 
+            return; 
+        } 
+ 
+        let result = 1; 
+ 
+        for (let i = 2; i <= n; i++) { 
+            result *= i; 
+        } 
+ 
+        realtimeOutput([ 
+            "Input n for factorial function: " + n, 
+            "The factorial of integer " + 
+            n + 
+            " is: " + 
+            result 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    2. REVERSE NUMBER 
+    ============================================== 
+    */ 
+ 
+    if (index === 1) { 
+ 
+        let number = parseInt(input); 
+ 
+        if (isNaN(number)) { 
+            number = 12345; 
+        } 
+ 
+        let original = number; 
+        let reverse = 0; 
+ 
+        while (number !== 0) { 
+ 
+            let remainder = number % 10; 
+ 
+            reverse = 
+                reverse * 10 + remainder; 
+ 
+            number = 
+                Math.trunc(number / 10); 
+        } 
+ 
+        realtimeOutput([ 
+            "Enter a number: " + original, 
+            "Reverse number: " + reverse 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    3. CASE 
+    ============================================== 
+    */ 
+ 
+    if (index === 2) { 
+ 
+        let choice = parseInt(input); 
+ 
+        if (isNaN(choice)) { 
+            choice = 1; 
+        } 
+ 
+        let message; 
+ 
+        switch (choice) { 
+ 
+            case 1: 
+                message = "You selected ONE."; 
+                break; 
+ 
+            case 2: 
+                message = "You selected TWO."; 
+                break; 
+ 
+            case 3: 
+                message = "You selected THREE."; 
+                break; 
+ 
+            default: 
+                message = "Invalid choice."; 
+        } 
+ 
+        realtimeOutput([ 
+            "Enter a number from 1 to 3: " + choice, 
+            message 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    4. GRADE 
+    ============================================== 
+    */ 
+ 
+    if (index === 3) { 
+ 
+        let score = parseInt(input); 
+ 
+        if (isNaN(score)) { 
+            score = 85; 
+        } 
+ 
+        let grade; 
+ 
+        if (score >= 90) { 
+            grade = "A"; 
+        } 
+        else if (score >= 80) { 
+            grade = "B"; 
+        } 
+        else if (score >= 70) { 
+            grade = "C"; 
+        } 
+        else if (score >= 60) { 
+            grade = "D"; 
+        } 
+        else { 
+            grade = "F"; 
+        } 
+ 
+        realtimeOutput([ 
+            "Enter score: " + score, 
+            "Grade: " + grade 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    5. SORTING 
+    ============================================== 
+    */ 
+ 
+    if (index === 4) { 
+ 
+        let numbers = 
+            [5, 2, 8, 1, 3]; 
+ 
+        numbers.sort(function(a, b) { 
+            return a - b; 
+        }); 
+ 
+        realtimeOutput([ 
+            "Original numbers: 5 2 8 1 3", 
+            "Sorted numbers: " + 
+            numbers.join(" ") 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    6. ARRAY 
+    ============================================== 
+    */ 
+ 
+    if (index === 5) { 
+ 
+        let numbers = 
+            [10, 20, 30, 40, 50]; 
+ 
+        let lines = 
+            ["Array values:"]; 
+ 
+        numbers.forEach(function(number) { 
+            lines.push(String(number)); 
+        }); 
+ 
+        realtimeOutput(lines); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    7. SQUARE ARRAY 
+    ============================================== 
+    */ 
+ 
+    if (index === 6) { 
+ 
+        let numbers = 
+            [1, 2, 3, 4, 5]; 
+ 
+        let lines = 
+            ["Square values:"]; 
+ 
+        numbers.forEach(function(number) { 
+ 
+            let square = 
+                number * number; 
+ 
+            lines.push( 
+                number + "² = " + square 
+            ); 
+ 
+        }); 
+ 
+        realtimeOutput(lines); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    8. STRING 
+    ============================================== 
+    */ 
+ 
+    if (index === 7) { 
+ 
+        let name = input; 
+ 
+        if (name === "") { 
+            name = "Student"; 
+        } 
+ 
+        realtimeOutput([ 
+            "Enter your name: " + name, 
+            "Hello, " + name + "!" 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    9. ENTER GRADE 
+    ============================================== 
+    */ 
+ 
+    if (index === 8) { 
+ 
+        let grade = 
+            input.toUpperCase(); 
+ 
+        if (grade === "") { 
+            grade = "A"; 
+        } 
+ 
+        let message; 
+ 
+        switch (grade) { 
+ 
+            case "A": 
+                message = "Excellent!"; 
+                break; 
+ 
+            case "B": 
+                message = "Very Good!"; 
+                break; 
+ 
+            case "C": 
+                message = "Good!"; 
+                break; 
+ 
+            case "D": 
+                message = "Needs Improvement."; 
+                break; 
+ 
+            case "F": 
+                message = "Failed."; 
+                break; 
+ 
+            default: 
+                message = "Invalid grade."; 
+        } 
+ 
+        realtimeOutput([ 
+            "Enter grade: " + grade, 
+            message 
+        ]); 
+ 
+        return; 
+    } 
+ 
+ 
+    /* 
+    ============================================== 
+    10. FLOAT 
+    ============================================== 
+    */ 
+ 
+    if (index === 9) { 
+ 
+        let price = 99.50; 
+        let quantity = 3.0; 
+ 
+        let total = 
+            price * quantity; 
+ 
+        realtimeOutput([ 
+            "Price: " + 
+            price.toFixed(2), 
+ 
+            "Quantity: " + 
+            quantity.toFixed(1), 
+ 
+            "Total: " + 
+            total.toFixed(2) 
+        ]); 
+ 
+        return; 
+    } 
+ 
+} 
+ 
+ 
+/* 
+================================================== 
+REALTIME OUTPUT 
+================================================== 
+*/ 
+ 
+function realtimeOutput(lines) { 
+ 
+    const output = 
+        document.getElementById("output"); 
+ 
+    output.textContent = 
+        ""; 
+ 
+    lines.forEach(function(line, index) { 
+ 
+        setTimeout(function() { 
+ 
+            output.textContent += 
+                line + "\n"; 
+ 
+        }, index * 600); 
+ 
+    }); 
+ 
+    setTimeout(function() { 
+ 
+        output.textContent += 
+            "\n--- Program finished ---"; 
+ 
+    }, lines.length * 600 + 200); 
+ 
+} 
+ 
+ 
+/* 
+================================================== 
+CLEAR OUTPUT 
+================================================== 
+*/ 
+ 
+function clearOutput() { 
+ 
+    document.getElementById("output") 
+        .textContent = ""; 
+ 
+} 
+ 
+ 
+/* 
+================================================== 
+LOAD FIRST DEMO 
+================================================== 
+*/ 
+ 
+loadDemo(0); 
+ 
+</script> 
+ 
+</body> 
+</html> 
